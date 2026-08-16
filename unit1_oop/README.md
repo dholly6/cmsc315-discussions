@@ -33,3 +33,15 @@ Your reflection should be approximately 150–200 words and address the followin
 2. What challenges did you encounter, and how did you overcome them?
 3. Compare OOP to procedural programming.
 4. Discuss the benefits of maintainability and reusability and apply this managing overhead, practical application development, and future use.
+
+# My Implementation
+
+I decided to create a video game character system using object oriented programming for discussion 1. I created a parent class called "gameCharacter" that stored the characters name and healh. Then I created a child class called "Player" that inherited from "gameCharacter" and added a level, inventory, and attack method to the player.
+
+I demonstrated class and instance namespaces by creating two player objects and adding a special ability to only one of them. I also demonstrated shallow and deep copying using a players inventory. When the original inventory was changed, the shallow copy reflected the change because the nested list was shared, while the deep copy remained unchanged.
+
+For my student created extension, I added a "take_damage" method. This method reduced a characters health while preventing health from dropping below zero. I also handeled negative damage as an invalid input.
+
+## Case Testing
+
+I tested the "take_damage" method with normal damage, damage greater than the character remaining health, and negative damage. Damage greater than the remaining health stopped the characters health at zero instead of allowing a negative value. Negative damage returned a error message and did not increase the characters health.
