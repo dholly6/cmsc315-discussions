@@ -22,7 +22,10 @@ def insert_at(lst, index, value):
     - Use comments to explain how insertion performance may vary depending on
       where the insertion occurs.
     """
-    pass
+    # Insert the new value at the specified position.
+    # Existing elements at and after the index shift one position to the right.
+    # Inserting near the beginning can take longer because more elements must shift.
+    lst.insert(index, value)
 
 
 def delete_at(lst, index):
@@ -36,8 +39,12 @@ def delete_at(lst, index):
     - Return None if the index is invalid.
     - Add comments explaining why index validation and safe deletion are important.
     """
-    pass
+    # Validate the index before deleting to avoid an IndexError.
+    if index < 0 or index >= len(lst):
+        return None
 
+    # pop() removes and returns the item at the specified index.
+    return lst.pop(index)
 
 def search_value(lst, value):
     """
@@ -49,7 +56,13 @@ def search_value(lst, value):
     - Return -1 if the value is not found.
     - Add comments explaining why this is a linear search and why it scans sequentially.
     """
-    pass
+    # Linear search checks each item in order from beginning to end.
+    # It stops when the value is found or after every item has been checked.
+    for index in range(len(lst)):
+        if lst[index] == value:
+            return index
+
+    return -1
 
 
 def main():
@@ -69,8 +82,22 @@ def main():
     # 4. Display the list after each insertion.
     # 5. Use comments to explain each step in the implementation.
 
-    print("\n=== INSERTION TESTS ===")
-    print("TODO: Create a list and demonstrate insertions.")
+    print("\n=== INSERTION TESTS: PLAYER INVENTORY ===")
+
+    inventory = ["Sword", "Shield", "Potion"]
+    print("Original inventory:", inventory)
+
+    # Insert at the beginning
+    insert_at(inventory, 0, "Map")
+    print("After inserting at beginning:", inventory)
+
+    # Insert in the middle
+    insert_at(inventory, 2, "Bow")
+    print("After inserting in middle:", inventory)
+
+    # Insert at the end
+    insert_at(inventory, len(inventory), "Key")
+    print("After inserting at end:", inventory)
 
     # ===============================
     # TODO (Student): DELETION TESTS
@@ -86,7 +113,20 @@ def main():
     # 4. Use comments to clearly explain what is happening in the output.
 
     print("\n=== DELETION TESTS ===")
-    print("TODO: Demonstrate deletions from multiple positions.")
+    # Delete the first item in the inventory.
+    removed = delete_at(inventory, 0)
+    print("Removed from beginning:", removed)
+    print("Updated inventory:", inventory)
+
+    # Delete an item from the middle of the inventory.
+    removed = delete_at(inventory, 2)
+    print("Removed from middle:", removed)
+    print("Updated inventory:", inventory)
+
+    # Delete the last item in the inventory.
+    removed = delete_at(inventory, len(inventory) - 1)
+    print("Removed from end:", removed)
+    print("Updated inventory:", inventory)
 
     # ===============================
     # TODO (Student): SEARCH TESTS
@@ -99,7 +139,15 @@ def main():
     # 4. Use comments to explain each step.
 
     print("\n=== SEARCH TESTS ===")
-    print("TODO: Demonstrate searching for values.")
+    # Search for an item that exists in the inventory.
+    item = "Bow"
+    index = search_value(inventory, item)
+    print(item, "found at index:", index)
+
+    # Search for an item that does not exist in the inventory.
+    item = "Armor"
+    index = search_value(inventory, item)
+    print(item, "search result:", index)
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -115,7 +163,16 @@ def main():
     # - Use comments to explain each edge case.
 
     print("\n=== EDGE CASES ===")
-    print("TODO: Demonstrate at least two edge cases.")
+    # Edge case 1: Try to delete an item using an invalid index.
+    # delete_at() safely returns None instead of causing an IndexError.
+    removed = delete_at(inventory, 10)
+    print("Delete at invalid index 10:", removed)
+
+    # Edge case 2: Try to delete an item from an empty inventory.
+    # delete_at() safely returns None because there are no items to remove.
+    empty_inventory = []
+    removed = delete_at(empty_inventory, 0)
+    print("Delete from empty inventory:", removed)
 
 
 
