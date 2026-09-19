@@ -31,9 +31,21 @@ def main():
     #    behaves like a hash table.
     # 4. Display the contents of the dictionary.
 
-
     print("\n=== INSERT OPERATIONS ===")
-    print("TODO: Create a dictionary and add multiple key-value pairs.")
+
+    # Create an empty dictionary for a video game inventory.
+    game_inventory = {}
+
+    # A dictionary behaves like a hash table by storing data
+    # as key-value pairs. The item name is the key and the
+    # number owned is the value.
+    game_inventory["Health Potion"] = 5
+    game_inventory["Mana Potion"] = 3
+    game_inventory["Iron Sword"] = 1
+    game_inventory["Wood"] = 20
+    game_inventory["Gold"] = 100
+
+    print("Game inventory:", game_inventory)
 
     # ===============================
     # TODO (Student): LOOKUP OPERATIONS
@@ -45,7 +57,10 @@ def main():
     # 3. Add meaningful comments to explain how the lookup works.
 
     print("\n=== LOOKUP OPERATIONS ===")
-    print("TODO: Demonstrate successful key lookups.")
+
+    # The key is used to quickly find its matching value.
+    print("Health Potions:", game_inventory["Health Potion"])
+    print("Gold:", game_inventory["Gold"])
 
     # ===============================
     # TODO (Student): UPDATE OPERATIONS
@@ -58,7 +73,13 @@ def main():
     #    a new value.
 
     print("\n=== UPDATE OPERATIONS ===")
-    print("TODO: Demonstrate updating an existing key.")
+
+    print("Before update:", game_inventory)
+
+    # Assigning a new value to an existing key replaces its old value.
+    game_inventory["Gold"] = 150
+
+    print("After update:", game_inventory)
 
     # ===============================
     # TODO (Student): DELETE OPERATIONS
@@ -70,7 +91,13 @@ def main():
     # 3. Use comments to explain what happens when a key is removed.
 
     print("\n=== DELETE OPERATIONS ===")
-    print("TODO: Demonstrate deleting a key-value pair.")
+
+    print("Before deletion:", game_inventory)
+
+    # Removing a key also removes the value connected to that key.
+    del game_inventory["Iron Sword"]
+
+    print("After deletion:", game_inventory)
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -87,8 +114,16 @@ def main():
     # Explain what happens in each case.
 
     print("\n=== EDGE CASES ===")
-    print("TODO: Demonstrate and explain edge cases.")
 
+    # Edge case 1: get() safely returns a message when a key is missing.
+    missing_item = game_inventory.get("Diamond", "Item not found")
+    print("Diamond lookup:", missing_item)
+
+    # Edge case 2: Check for a key before trying to delete it.
+    if "Magic Shield" in game_inventory:
+        del game_inventory["Magic Shield"]
+    else:
+        print("Magic Shield cannot be deleted because it is not in the inventory.")
 
 
 if __name__ == "__main__":
