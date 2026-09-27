@@ -21,10 +21,8 @@ This assignment compares Bubble Sort and Merge Sort.
 
 ## Discussion Board Reflection
 
-After completing the programming assignment, add this reflection to your initial discussion post in LEO.
+While completing this assignment, I learned how Bubble Sort and Merge Sort organize data in different ways. I used video game scores to test both algorithms and compared their results using two datasets. I also tested empty and already sorted lists to make sure both algorithms handled those cases correctly.
 
-Your reflection should be approximately 150–200 words and address the following questions:
+The biggest challenge was understanding how Merge Sort uses recursion. Bubble Sort was easier for me to follow because it compares neighboring values and swaps them when they are out of order. Merge Sort was more complicated because it divides the list into smaller parts and then combines them in sorted order. Breaking the process into separate functions helped me understand it.
 
-1. What concepts or skills did you learn while completing this assignment?
-2. What challenges did you encounter, and how did you overcome them?
-3. Compare and constrast each sorting algorithm based on efficiency differences, tradeoffs made, and when to each.
+Bubble Sort is useful for small lists or lists that are already nearly sorted, especially when it can stop early if no swaps are needed. However, it can become slow with larger datasets because it may need many comparisons. Merge Sort is more efficient for large datasets because its time complexity is O(n log n), compared with Bubble Sort's O(n²) worst case. The tradeoff is that Merge Sort needs extra memory when merging the lists.
