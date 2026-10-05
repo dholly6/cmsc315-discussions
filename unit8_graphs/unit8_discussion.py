@@ -33,7 +33,32 @@ def bfs(graph, start):
     - How BFS differs from depth-first traversal.
     """
 
-    pass
+    # Safely handle a starting location that does not exist.
+    if start not in graph:
+        return []
+
+    visited = []
+    visited_set = set()
+
+    # A queue follows FIFO order, allowing BFS to visit
+    # nearby nodes before moving farther away.
+    queue = deque([start])
+    visited_set.add(start)
+
+    while queue:
+        current = queue.popleft()
+        visited.append(current)
+
+        # Add unvisited neighbors so they can be explored
+        # level by level.
+        for neighbor in graph[current]:
+            if neighbor not in visited_set:
+                visited_set.add(neighbor)
+                queue.append(neighbor)
+
+    # Unlike DFS, BFS explores nearby nodes first instead
+    # of following one path as deeply as possible.
+    return visited
 
 
 def main():
@@ -51,7 +76,21 @@ def main():
     # 5. Use comments to explain what the nodes and edges represent.
 
     print("\n=== GRAPH STRUCTURE ===")
-    print("TODO: Create and display a graph.")
+
+    # Each node represents a location on a video game map.
+    # Each edge represents a path connecting two locations.
+    game_map = {
+        "Town": ["Forest", "Castle"],
+        "Forest": ["Town", "Cave", "River"],
+        "Castle": ["Town", "Village"],
+        "Cave": ["Forest"],
+        "River": ["Forest", "Village"],
+        "Village": ["Castle", "River"]
+    }
+
+    # Display each location and its connected locations.
+    for location, connections in game_map.items():
+        print(location, "->", connections)
 
     # ===============================
     # TODO (Student): BFS TRAVERSAL
@@ -66,7 +105,19 @@ def main():
     #    and demonstrate the updated traversal.
 
     print("\n=== BFS TRAVERSAL ===")
-    print("TODO: Perform and explain BFS traversal.")
+
+    # Begin at Town. BFS visits locations closest to Town first.
+    start_location = "Town"
+
+    print("Starting location:", start_location)
+    print("BFS traversal:", bfs(game_map, start_location))
+
+    # Add a new location to the game map.
+    game_map["Mountain"] = ["Village"]
+    game_map["Village"].append("Mountain")
+
+    print("\nAdded new location: Mountain")
+    print("Updated BFS traversal:", bfs(game_map, start_location))
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -84,8 +135,18 @@ def main():
     # Explain what happens in each case.
 
     print("\n=== EDGE CASE TESTS ===")
-    print("TODO: Demonstrate and explain edge cases.")
 
+    # Edge case 1: Starting from a node that does not exist.
+    # BFS safely returns an empty list instead of causing an error.
+    print("Missing starting node:", bfs(game_map, "Beach"))
+
+    # Edge case 2: A graph containing only one node.
+    # BFS visits the single node and then stops.
+    single_location = {
+        "Island": []
+    }
+
+    print("Single-node graph:", bfs(single_location, "Island"))
 
 
 if __name__ == "__main__":
