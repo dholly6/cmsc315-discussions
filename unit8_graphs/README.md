@@ -27,7 +27,7 @@ After completing the programming assignment, add this reflection to your initial
 
 Your reflection should be approximately 150–200 words and address the following questions:
 
-1. What concepts or skills did you learn while completing this assignment?
-2. What challenges did you encounter, and how did you overcome them?
-3. Compare BFS and DFS conceptually and describe real-world applications and use cases.
+While completing this assignment, I learned how graphs can represent connections between different objects and how Breadth-First Search can be used to traverse those connections. I created a video game map using an adjacency list where locations represented nodes and paths represented edges. I also learned how BFS uses a queue to visit nearby nodes level by level.
+One challenge was understanding how to prevent BFS from visiting the same node multiple times. I handled this by using a set to keep track of visited nodes before adding new neighbors to the queue. I also tested a missing starting node and a graph containing only one node to see how BFS handled edge cases.
+BFS and DFS both traverse graphs, but they explore them differently. BFS visits nearby nodes first using a queue, while DFS follows one path deeper before backtracking. BFS would be useful for finding nearby locations or shortest paths in an unweighted game map. DFS could be useful for exploring deeper paths, such as searching through a maze or discovering connected areas.
 
